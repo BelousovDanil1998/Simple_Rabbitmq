@@ -8,8 +8,10 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class HomeProducerApplication {
 
 	public static void main(String[] args) {
@@ -40,6 +42,6 @@ public class HomeProducerApplication {
 
 	@Bean
 	public Binding binding(Queue myQueue, DirectExchange exchange) {
-		return BindingBuilder.bind(myQueue).to(exchange).with("homeQueue");
+		return BindingBuilder.bind(myQueue).to(exchange).with("homeRoutingKey");
 	}
 }

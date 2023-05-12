@@ -15,10 +15,9 @@ public class MessageReceiver {
 
     @RabbitListener(queues = "homeQueue")
     public void receiveHome(Home home) {
-        System.out.println(" начал работу метода получения дома");
         HomeEntity homeEntity = new HomeEntity(home.getFloor());
         homeRepository.save(homeEntity);
-        System.out.println("получил дом");
+        System.out.println("получил дом №" + home.getFloor());
     }
 
 }
