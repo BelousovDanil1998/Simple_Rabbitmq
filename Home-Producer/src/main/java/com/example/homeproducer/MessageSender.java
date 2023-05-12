@@ -18,7 +18,7 @@ public class MessageSender {
     @PostConstruct
     public void sendHome() {
         Home home = new Home(123);
-        rabbitTemplate.convertAndSend("homeExchange", "home.create", home);
+        rabbitTemplate.convertAndSend("homeExchange", "homeRoutingKey", home);
         System.out.println("послал дом");
     }
 }

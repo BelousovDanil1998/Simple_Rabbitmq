@@ -32,7 +32,7 @@ public class ConsumerApplication {
 
     @Bean
     public Queue myQueue() {
-        return new Queue("homeQueue", false);
+        return new Queue("homeQueue", true);
     }
 
     @Bean
@@ -42,7 +42,7 @@ public class ConsumerApplication {
 
     @Bean
     public Binding binding(Queue myQueue, DirectExchange exchange) {
-        return BindingBuilder.bind(myQueue).to(exchange).with("home.create");
+        return BindingBuilder.bind(myQueue).to(exchange).with("homeRoutingKey");
     }
 
     @Bean

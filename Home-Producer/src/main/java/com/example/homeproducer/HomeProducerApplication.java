@@ -35,11 +35,11 @@ public class HomeProducerApplication {
 
 	@Bean
 	public Queue myQueue() {
-		return new Queue("homeQueue", false);
+		return new Queue("homeQueue", true);
 	}
 
 	@Bean
 	public Binding binding(Queue myQueue, DirectExchange exchange) {
-		return BindingBuilder.bind(myQueue).to(exchange).with("home.create");
+		return BindingBuilder.bind(myQueue).to(exchange).with("homeQueue");
 	}
 }
